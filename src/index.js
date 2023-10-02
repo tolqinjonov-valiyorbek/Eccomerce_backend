@@ -4,6 +4,7 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const  db_connect_init  = require("./db/db_connect_init");
+const  user = require("./routes/user")
 const app = express();
 const port = 5000; // local port that will be running
 
@@ -22,6 +23,9 @@ app.use((err, req, res, next) => {
   }
   next();
 });
+
+app.use('/api/user', user);
+
 // Running server
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
