@@ -4,7 +4,7 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const  db_connect_init  = require("./db/db_connect_init");
-const  user = require("./routes/user")
+
 const app = express();
 const port = 5000; // local port that will be running
 
@@ -13,6 +13,10 @@ app.use(cors({ orign: "*", credentials: true }));
 
 // Connecting to MongoDB (online)
 db_connect_init();
+
+
+const  user = require("./routes/user");
+const upload = require("./routes/upload")
 
 
 app.use((err, req, res, next) => {
@@ -25,6 +29,7 @@ app.use((err, req, res, next) => {
 });
 
 app.use('/api/user', user);
+app.use('/api/upload', upload)
 
 // Running server
 app.listen(port, () => {
