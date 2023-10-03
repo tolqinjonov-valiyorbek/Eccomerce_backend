@@ -17,6 +17,7 @@ db_connect_init();
 const user = require("./routes/user");
 const upload = require("./routes/upload");
 const product = require("./routes/product");
+const cart = require("./routes/cart")
 
 app.use((err, req, res, next) => {
   if (err) {
@@ -30,6 +31,7 @@ app.use((err, req, res, next) => {
 app.use("/api/user", user);
 app.use("/api/upload", upload);
 app.use("/api/product", product);
+app.use("/api/cart", cart)
 
 // Running server
 app.listen(port, () => {

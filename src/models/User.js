@@ -24,6 +24,7 @@ var userSchema = new mongoose.Schema(
     cart: {
       type: Array,
       default: [],
+      ref:"Cart"
     },
     address: {
       type: String,
